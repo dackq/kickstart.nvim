@@ -160,6 +160,11 @@ vim.opt.foldmethod = 'syntax'
 -- Ruler
 vim.opt.cc = '100'
 
+-- Tabs
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 

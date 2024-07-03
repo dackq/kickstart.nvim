@@ -171,6 +171,12 @@ return { -- LSP Configuration & Plugins
       'isort',
       'black',
       'google-java-format',
+      'prettier',
+    }
+
+    local debuggers = {
+      'debugpy',
+      'codelldb',
     }
 
     -- Ensure the servers and tools above are installed
@@ -186,6 +192,9 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       formatters,
+    })
+    vim.list_extend(ensure_installed, {
+      debuggers,
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

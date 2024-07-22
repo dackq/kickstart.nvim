@@ -172,6 +172,7 @@ return { -- LSP Configuration & Plugins
       'black',
       'google-java-format',
       'prettier',
+      'clang-format',
     }
 
     local debuggers = {

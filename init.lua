@@ -443,6 +443,7 @@ require('lazy').setup({
         python = { 'isort', 'black' },
         java = { 'google-java-format' },
         javascript = { 'prettier' },
+        c = { 'clang-format' },
       },
     },
   },

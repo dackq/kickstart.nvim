@@ -446,6 +446,7 @@ require('lazy').setup({
         java = { 'google-java-format' },
         javascript = { 'prettier' },
         c = { 'clang-format' },
+        go = { 'gofumpt' },
       },
     },
   },

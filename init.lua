@@ -164,6 +164,7 @@ vim.opt.foldmethod = 'syntax'
 vim.opt.cc = '100'
 
 -- Tabs
+vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
 vim.opt.expandtab = true

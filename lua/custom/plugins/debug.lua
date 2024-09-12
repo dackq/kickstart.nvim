@@ -44,7 +44,6 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
-        'codelldb',
       },
     }
 
@@ -90,6 +89,5 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
-    require('dap-lldb').setup()
   end,
 }

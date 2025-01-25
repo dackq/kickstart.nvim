@@ -211,5 +211,8 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
+
+    -- nushell is not supported by mason so we set it up by itself
+    require('lspconfig').nushell.setup {}
   end,
 }

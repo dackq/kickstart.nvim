@@ -456,6 +456,7 @@ require('lazy').setup({
         javascript = { 'prettier' },
         c = { 'clang-format' },
         go = { 'gofumpt' },
+        json = { 'prettier' },
       },
     },
   },

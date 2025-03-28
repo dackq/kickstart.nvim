@@ -171,7 +171,7 @@ return { -- LSP Configuration & Plugins
       'isort',
       'black',
       'google-java-format',
-      'prettier',
+      'prettierd',
       'clang-format',
     }
 

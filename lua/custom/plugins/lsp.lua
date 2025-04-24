@@ -127,6 +127,9 @@ return { -- LSP Configuration & Plugins
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+    -- set JAVA_HOME for jdtls (needs to have at least 21)
+    vim.uv.os_setenv('JAVA_HOME', 'C:\\Program Files\\Java\\jdk-21\\')
+
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -153,7 +156,27 @@ return { -- LSP Configuration & Plugins
       --
       --
 
-      jdtls = {},
+      jdtls = {
+        settings = {
+          java = {
+            configuration = {
+              -- These are potential runtimes that the project can use. I believe for these to be used, the maven or
+              -- gradle config files need to specify that a specific runtime should be used, or you can set it with
+              -- :JdtSetRuntime.
+              runtimes = {
+                {
+                  name = 'JavaSE-17',
+                  path = 'C:\\Program Files\\Java\\jdk-17\\',
+                },
+                {
+                  name = 'JavaSE-21',
+                  path = 'C:\\Program Files\\Java\\jdk-21\\',
+                },
+              },
+            },
+          },
+        },
+      },
 
       lua_ls = {
         -- cmd = {...},

@@ -196,8 +196,10 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, formatters)
 
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
     require('mason-lspconfig').setup {
-      ensure_installed = ensure_installed,
+      ensure_installed = {},
       automatic_installation = true,
       handlers = {
         function(server_name)

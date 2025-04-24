@@ -174,10 +174,6 @@ return { -- LSP Configuration & Plugins
       'clang-format',
     }
 
-    local debuggers = {
-      'debugpy',
-      'codelldb',
-    }
 
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
@@ -190,13 +186,7 @@ return { -- LSP Configuration & Plugins
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      formatters,
-    })
-    vim.list_extend(ensure_installed, {
-      debuggers,
-    })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+    vim.list_extend(ensure_installed, formatters)
 
     require('mason-lspconfig').setup {
       automatic_installation = false,

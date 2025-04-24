@@ -214,4 +214,5 @@ return { -- LSP Configuration & Plugins
     -- nushell is not supported by mason so we set it up by itself
     require('lspconfig').nushell.setup {}
   end,
+  cond = not vim.g.vscode,
 }

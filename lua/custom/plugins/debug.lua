@@ -91,4 +91,5 @@ return {
     -- Install golang specific config
     --require('dap-go').setup()
   end,
+  cond = not vim.g.vscode,
 }

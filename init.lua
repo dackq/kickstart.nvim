@@ -235,8 +235,8 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'mtdl9/vim-log-highlighting', -- Add syntax highlighting for comments
+  { 'tpope/vim-sleuth', cond = not vim.g.vscode }, -- Detect tabstop and shiftwidth automatically
+  { 'mtdl9/vim-log-highlighting', cond = not vim.g.vscode }, -- Add syntax highlighting for comments
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -248,7 +248,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', opts = {}, cond = not vim.g.vscode },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -266,6 +266,7 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+    cond = not vim.g.vscode,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -305,6 +306,7 @@ require('lazy').setup({
         { '<leader>w_', hidden = true },
       }
     end,
+    cond = not vim.g.vscode,
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -417,6 +419,7 @@ require('lazy').setup({
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
     end,
+    cond = not vim.g.vscode,
   },
 
   { -- Autoformat
@@ -459,6 +462,7 @@ require('lazy').setup({
         json = { 'prettierd' },
       },
     },
+    cond = not vim.g.vscode,
   },
 
   { -- Autocompletion
@@ -564,6 +568,7 @@ require('lazy').setup({
         },
       }
     end,
+    cond = not vim.g.vscode,
   },
 
   { -- You can easily change to a different colorscheme.
@@ -583,10 +588,17 @@ require('lazy').setup({
       -- You can configure highlights by doing something like:
       --   vim.cmd.hi 'Comment gui=none'
     end,
+    cond = not vim.g.vscode,
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+    cond = not vim.g.vscode,
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -624,6 +636,7 @@ require('lazy').setup({
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
+    cond = not vim.g.vscode,
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -658,9 +671,10 @@ require('lazy').setup({
       vim.opt.foldcolumn = '0'
       vim.opt.foldtext = ''
       vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 1
+      vim.opt.foldlevelstart = 99
       vim.opt.foldnestmax = 4
     end,
+    cond = not vim.g.vscode,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -681,7 +695,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = 'custom.plugins' },
+  { import = 'custom.plugins', cond = not vim.g.vscode },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

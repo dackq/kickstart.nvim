@@ -21,4 +21,5 @@ return {
     -- custom mappings
     vim.keymap.set('n', '<leader>ve', api.tree.toggle, { desc = '[V]iew: toggle nvim-tree [E]xplorer', noremap = true, silent = true, nowait = true })
   end,
+  cond = not vim.g.vscode,
 }

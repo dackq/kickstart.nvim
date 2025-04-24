@@ -177,7 +177,6 @@ return { -- LSP Configuration & Plugins
       'clang-format',
     }
 
-
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
     --  other tools, you can run
@@ -192,7 +191,8 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, formatters)
 
     require('mason-lspconfig').setup {
-      automatic_installation = false,
+      ensure_installed = ensure_installed,
+      automatic_installation = true,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}

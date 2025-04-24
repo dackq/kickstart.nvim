@@ -171,15 +171,6 @@ return { -- LSP Configuration & Plugins
       },
     }
 
-    local formatters = {
-      'stylua',
-      'isort',
-      'black',
-      'google-java-format',
-      'prettierd',
-      'clang-format',
-    }
-
     -- Load nvim-java plugin (needs to be done before lspconfig)
     -- require('java').setup()
 
@@ -194,12 +185,9 @@ return { -- LSP Configuration & Plugins
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, formatters)
-
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      ensure_installed = {},
+      ensure_installed = ensure_installed,
       automatic_installation = true,
       handlers = {
         function(server_name)

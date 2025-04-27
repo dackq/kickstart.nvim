@@ -45,6 +45,7 @@ return {
         -- Update this to ensure that you have the debuggers for the langs you want
         'debugpy',
         'codelldb',
+        'java-debug-adapter',
       },
     }
 
@@ -90,6 +91,29 @@ return {
 
     -- Install golang specific config
     --require('dap-go').setup()
+
+    -- Java configuration
+    dap.configurations.java = {
+      {
+        name = 'Debug Launch (2GB)',
+        type = 'java',
+        request = 'launch',
+        vmArgs = '' .. '-Xmx2g ', -- adds 2G heap
+      },
+      {
+        name = 'Debug Attach (8000)',
+        type = 'java',
+        request = 'attach',
+        hostName = '127.0.0.1',
+        port = 8000,
+      },
+      {
+        name = 'Debug Attach (5005)',
+        type = 'java',
+        request = 'attach',
+        port = 5005,
+      },
+    }
   end,
   cond = not vim.g.vscode,
 }

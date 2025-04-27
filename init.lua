@@ -84,20 +84,28 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+-- check operating system
+local is_windows = vim.fn.has 'win64' == 1
+local is_mac = not is_windows
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Set nu as default shell
-vim.o.shell = 'C:\\Users\\dakota.reed\\scoop\\shims\\nu.exe'
+-- Set nu as default shell if we are in windows
+if is_windows then
+  vim.o.shell = 'C:\\Users\\dakota.reed\\scoop\\shims\\nu.exe'
+end
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
--- Set the default python version
-vim.g.python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.12/bin/python3'
+-- Set the default python version if mac
+if is_mac then
+  vim.g.python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.12/bin/python3'
+end
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`

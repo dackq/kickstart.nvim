@@ -19,11 +19,6 @@ else
   system_os = 'linux'
 end
 
--- Needed for debugging
-local bundles = {
-  vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
-}
-
 -- set runtime paths based on os
 local runtimes = system_os == 'mac'
     and {
@@ -40,7 +35,21 @@ local runtimes = system_os == 'mac'
         path = '/Users/dak/.sdkman/candidates/java/21.0.1-oracle/',
       },
     }
-  or {}
+  or {
+    {
+      name = 'JavaSE-17',
+      path = 'C:\\Program Files\\Java\\jdk-17\\',
+    },
+    {
+      name = 'JavaSE-21',
+      path = 'C:\\Program Files\\Java\\jdk-21\\',
+    },
+  }
+
+-- Needed for debugging
+local bundles = {
+  vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
+}
 
 -- Needed for running/debugging unit tests
 vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-test/*.jar', 1), '\n'))

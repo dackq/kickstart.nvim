@@ -100,6 +100,10 @@ return { -- LSP Configuration & Plugins
         --  For example, in C this would take you to the header.
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+        -- run tests
+        map('<leader>tc', require('jdtls').test_class, '[T]est Java [C]lass')
+        map('<leader>tm', require('jdtls').test_nearest_method, '[T]est Java [M]ethod')
+
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed
@@ -143,6 +147,7 @@ return { -- LSP Configuration & Plugins
       yamlls = {},
       bashls = {},
       rust_analyzer = {},
+      lemminx = {}, -- xml
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:

@@ -23,6 +23,7 @@ return { -- Autoformat
         'google-java-format',
         'prettierd',
         'clang-format',
+        'xmlformatter',
       },
     }
 

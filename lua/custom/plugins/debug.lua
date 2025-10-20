@@ -46,6 +46,7 @@ return {
         'debugpy',
         'codelldb',
         'java-debug-adapter',
+        'haskell-debug-adapter',
       },
     }
 

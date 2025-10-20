@@ -24,6 +24,7 @@ return { -- Autoformat
         'prettierd',
         'clang-format',
         'xmlformatter',
+        'fourmolu',
       },
     }
 
@@ -52,6 +53,7 @@ return { -- Autoformat
         c = { 'clang-format' },
         go = { 'gofumpt' },
         json = { 'prettierd' },
+        haskell = { 'fourmolu' },
       },
     }
   end,

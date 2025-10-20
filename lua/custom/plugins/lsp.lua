@@ -191,6 +191,8 @@ return { -- LSP Configuration & Plugins
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
 
+    vim.tbl_extend('keep', ensure_installed, { 'haskell-language-server' })
+
     require('mason-lspconfig').setup {
       ensure_installed = ensure_installed,
       automatic_installation = true,
@@ -209,8 +211,15 @@ return { -- LSP Configuration & Plugins
       },
     }
 
+    local lspconfig = require 'lspconfig'
     -- nushell is not supported by mason so we set it up by itself
-    require('lspconfig').nushell.setup {}
+    vim.lsp.enable 'nushell'
+
+    --haskell language server has a different name in lsp config so we set it up here
+    vim.lsp.config('hls', {
+      filetypes = { 'haskell', 'lhaskell', 'cabal' },
+    })
+    vim.lsp.enable 'hls'
   end,
   cond = not vim.g.vscode,
 }
